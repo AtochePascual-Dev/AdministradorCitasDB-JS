@@ -33,17 +33,18 @@ export const generarCita = (event) => {
     return;
   };
 
-  // generamos un id para la cita
-  citaDatos.id = Date.now();
-
-  // Agregamos la cita a la base de datos
-  agregarCitaBD({ ...citaDatos });
+  // validamos si el objeto cita contiene un id
+  (citaDatos.id)
+    ? editarCitaBD({ ...citaDatos })
+    : agregarCitaBD({ ...citaDatos });
 
   // Obtenemos la citas de la BD y las mostramos
   ui.motrarCitas();
 
   // Reseteamos el formulario y los datos del objeto cita
   ui.resetearFormulario();
+
+  console.log(citaDatos);
 };
 
 
@@ -84,6 +85,9 @@ export const crearBaseDatos = () => {
 const agregarCitaBD = (cita) => {
   const transaction = BD.transaction(['citas'], 'readwrite');
   const objectStore = transaction.objectStore('citas');
+
+  // generamos un id para la cita
+  citaDatos.id = Date.now();
 
   objectStore.add(cita);
 
@@ -135,4 +139,23 @@ export const cargarDatos = (cita) => {
   citaDatos.hora = hora;
   citaDatos.sintomas = sintomas;
   citaDatos.id = id;
+};
+
+
+
+
+// * Edita una cita de BD
+export const editarCitaBD = (cita) => {
+  const transaction = BD.transaction(['citas'], 'readwrite');
+  const objectStore = transaction.objectStore('citas');
+
+  objectStore.put(cita);
+
+  transaction.oncomplete = () => {
+    ui.mostrarMensaje('Cita editada correctamente');
+  };
+
+  transaction.onerror = () => {
+    ui.mostrarMensaje('Error al editar la cita', false);
+  };
 };

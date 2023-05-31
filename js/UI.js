@@ -119,6 +119,6 @@ export class UI {
     citaDatos.fecha = '';
     citaDatos.hora = '';
     citaDatos.sintomas = '';
-    delete citaDatos.telefono.id;
+    delete citaDatos.id;
   };
 };
