@@ -32,6 +32,9 @@ export class UI {
     const transaction = BD.transaction(['citas']);
     const objectStore = transaction.objectStore('citas');
 
+    // limpiamos la lista de html previa
+    this.limpiarListaHtml();
+
     objectStore.openCursor().onsuccess = (event) => {
 
       // obtenemos un registro de la bd
@@ -83,9 +86,18 @@ export class UI {
 
         contenedorCitas.appendChild(divCita);
 
-        // Ve l siguiente elemento
+        // Ve al siguiente elemento
         cursor.continue();
       };
     }
+  };
+
+
+
+  // * Limpa la lisa de html previa
+  limpiarListaHtml() {
+    while (contenedorCitas.firstChild) {
+      contenedorCitas.firstChild.remove();
+    };
   };
 };
