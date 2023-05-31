@@ -25,8 +25,8 @@ export const generarCita = (event) => {
     return;
   };
 
-  // Encaso de pasar la validacion mostramos un mensaje de exito
-  ui.mostrarMensaje('Cita creada correctamente');
+  // Agregamos la cita a la base de datos
+  agregarCitaBD({ ...citaDatos });
 };
 
 
@@ -57,5 +57,22 @@ export const crearBaseDatos = () => {
 
   baseDatos.onerror = () => {
     console.log('Error al crear la base de datos');
+  };
+};
+
+
+// * Agrega una cita a la Base de datos
+const agregarCitaBD = (cita) => {
+  const transaction = BD.transaction(['citas'], 'readwrite');
+  const objectStore = transaction.objectStore('citas');
+
+  objectStore.add(cita);
+
+  transaction.oncomplete = () => {
+    ui.mostrarMensaje('Cita creada correctamente');
+  };
+
+  transaction.onerror = () => {
+    ui.mostrarMensaje('Error al crear la cita', false);
   };
 };
