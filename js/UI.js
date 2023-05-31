@@ -1,6 +1,6 @@
 // * IMPORTACIONES
 import { contenedorCitas, formulario, citaDatos } from './variables.js';
-import { BD } from './funciones.js';
+import { BD, eliminarCita } from './funciones.js';
 export class UI {
 
   // * Muestra un mensaje en pantalla
@@ -76,6 +76,9 @@ export class UI {
         const bntEliminar = document.createElement('button');
         bntEliminar.textContent = 'Eliminar';
         bntEliminar.classList.add('btn', 'btn-danger', 'mr-2');
+        bntEliminar.onclick = () => {
+          eliminarCita(id);
+        };
 
         // Boton para editar un cita
         const bntEditar = document.createElement('button');

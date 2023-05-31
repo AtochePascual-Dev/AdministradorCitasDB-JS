@@ -1,5 +1,13 @@
 // * IMPORTACIONES
-import { citaDatos } from './variables.js';
+import {
+  citaDatos,
+  inputMascota,
+  inputPropietario,
+  inputTelefono,
+  inputFecha,
+  inputHora,
+  inputSintomas,
+} from './variables.js';
 import { UI } from './UI.js';
 
 const ui = new UI();
@@ -85,5 +93,24 @@ const agregarCitaBD = (cita) => {
 
   transaction.onerror = () => {
     ui.mostrarMensaje('Error al crear la cita', false);
+  };
+};
+
+
+
+// * Elimina una cita de BD
+export const eliminarCita = (id) => {
+  const transaction = BD.transaction(['citas'], 'readwrite');
+  const objectStore = transaction.objectStore('citas');
+
+  objectStore.delete(id);
+
+  transaction.oncomplete = () => {
+    ui.mostrarMensaje('Cita eliminada correctamente');
+    ui.motrarCitas();
+  };
+
+  transaction.onerror = () => {
+    ui.mostrarMensaje('Error al eliminar la cita', false);
   };
 };
