@@ -1,6 +1,6 @@
 // * IMPORTACIONES
-import { contenedorCitas, formulario, citaDatos } from './variables.js';
-import { BD, eliminarCita, cargarDatos } from './funciones.js';
+import { contenedorCitas, formulario, citaDatos } from '../variables.js';
+import { BD, eliminarCita, cargarDatos } from '../funciones.js';
 export class UI {
 
   // * Muestra un mensaje en pantalla

@@ -8,7 +8,7 @@ import {
   inputHora,
   inputSintomas,
 } from './variables.js';
-import { UI } from './UI.js';
+import { UI } from './clases/UI.js';
 
 const ui = new UI();
 export let BD;
