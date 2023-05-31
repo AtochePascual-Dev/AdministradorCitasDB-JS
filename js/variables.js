@@ -13,5 +13,3 @@ export let citaDatos = {
   hora: '',
   sintomas: '',
 };
-
-
