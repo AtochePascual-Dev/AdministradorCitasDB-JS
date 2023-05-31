@@ -3,7 +3,7 @@ import { citaDatos } from './variables.js';
 import { UI } from './UI.js';
 
 const ui = new UI();
-let BD;
+export let BD;
 
 // * Llena los datos del objeto cita segun propiedad name
 export const llenarDatosCita = (event) => {
@@ -27,6 +27,9 @@ export const generarCita = (event) => {
 
   // Agregamos la cita a la base de datos
   agregarCitaBD({ ...citaDatos });
+
+  // Obtenemos la citas de la BD y las mostramos
+  ui.motrarCitas();
 };
 
 
@@ -53,6 +56,7 @@ export const crearBaseDatos = () => {
 
   baseDatos.onsuccess = () => {
     console.log('Base datos creada correctamente');
+    BD = baseDatos.result;
   };
 
   baseDatos.onerror = () => {
