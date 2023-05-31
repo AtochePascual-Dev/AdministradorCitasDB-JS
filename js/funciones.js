@@ -90,7 +90,7 @@ const agregarCitaBD = (cita) => {
   const objectStore = transaction.objectStore('citas');
 
   // generamos un id para la cita
-  citaDatos.id = Date.now();
+  cita.id = Date.now();
 
   objectStore.add(cita);
 

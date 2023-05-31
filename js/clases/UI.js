@@ -85,7 +85,7 @@ export class UI {
         bntEditar.textContent = 'Editar';
         bntEditar.classList.add('btn', 'btn-info');
         bntEditar.onclick = () => {
-          cargarDatos(cursor.value);
+          cargarDatos({ mascota, propietario, telefono, fecha, hora, sintomas, id });
         }
 
         divCita.append(mascotaText, propietarioText, telefonoText, fechaText, horaText, sintomasText, bntEliminar, bntEditar);
