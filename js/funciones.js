@@ -23,6 +23,7 @@ export const llenarDatosCita = (event) => {
 };
 
 
+
 // * Genera una cita
 export const generarCita = (event) => {
   event.preventDefault();
@@ -44,8 +45,9 @@ export const generarCita = (event) => {
   // Reseteamos el formulario y los datos del objeto cita
   ui.resetearFormulario();
 
-  console.log(citaDatos);
+  document.querySelector('button[type=submit]').textContent = 'crear cita';
 };
+
 
 
 // * Crea al base de datos
@@ -79,6 +81,7 @@ export const crearBaseDatos = () => {
     console.log('Error al crear la base de datos');
   };
 };
+
 
 
 // * Agrega una cita a la Base de datos
@@ -119,6 +122,8 @@ export const eliminarCita = (id) => {
   };
 };
 
+
+
 // * Carga los datos del objeto y los inputs
 export const cargarDatos = (cita) => {
   const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
@@ -139,8 +144,9 @@ export const cargarDatos = (cita) => {
   citaDatos.hora = hora;
   citaDatos.sintomas = sintomas;
   citaDatos.id = id;
-};
 
+  document.querySelector('button[type=submit]').textContent = 'Guardar Cambios';
+};
 
 
 
