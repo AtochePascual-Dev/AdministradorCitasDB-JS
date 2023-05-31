@@ -1,5 +1,5 @@
 // * IMPORTACIONES
-import { contenedorCitas } from './variables.js';
+import { contenedorCitas, formulario, citaDatos } from './variables.js';
 import { BD } from './funciones.js';
 export class UI {
 
@@ -99,5 +99,20 @@ export class UI {
     while (contenedorCitas.firstChild) {
       contenedorCitas.firstChild.remove();
     };
+  };
+
+
+  //* Reseta el formulario
+  resetearFormulario() {
+    formulario.reset();
+
+    // resetemos los valores del objeto cita
+    citaDatos.mascota = '';
+    citaDatos.propietario = '';
+    citaDatos.telefono = '';
+    citaDatos.fecha = '';
+    citaDatos.hora = '';
+    citaDatos.sintomas = '';
+    delete citaDatos.telefono.id;
   };
 };

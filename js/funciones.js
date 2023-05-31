@@ -30,6 +30,8 @@ export const generarCita = (event) => {
 
   // Obtenemos la citas de la BD y las mostramos
   ui.motrarCitas();
+
+  ui.resetearFormulario();
 };
 
 
