@@ -25,6 +25,9 @@ export const generarCita = (event) => {
     return;
   };
 
+  // generamos un id para la cita
+  citaDatos.id = Date.now();
+
   // Agregamos la cita a la base de datos
   agregarCitaBD({ ...citaDatos });
 
