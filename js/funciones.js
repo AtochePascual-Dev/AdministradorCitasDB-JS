@@ -34,6 +34,7 @@ export const generarCita = (event) => {
   // Obtenemos la citas de la BD y las mostramos
   ui.motrarCitas();
 
+  // Reseteamos el formulario y los datos del objeto cita
   ui.resetearFormulario();
 };
 
@@ -62,6 +63,7 @@ export const crearBaseDatos = () => {
   baseDatos.onsuccess = () => {
     console.log('Base datos creada correctamente');
     BD = baseDatos.result;
+    ui.motrarCitas();
   };
 
   baseDatos.onerror = () => {
