@@ -1,6 +1,6 @@
 // * IMPORTACIONES
 import { contenedorCitas, formulario, citaDatos } from './variables.js';
-import { BD, eliminarCita } from './funciones.js';
+import { BD, eliminarCita, cargarDatos } from './funciones.js';
 export class UI {
 
   // * Muestra un mensaje en pantalla
@@ -84,6 +84,9 @@ export class UI {
         const bntEditar = document.createElement('button');
         bntEditar.textContent = 'Editar';
         bntEditar.classList.add('btn', 'btn-info');
+        bntEditar.onclick = () => {
+          cargarDatos(cursor.value);
+        }
 
         divCita.append(mascotaText, propietarioText, telefonoText, fechaText, horaText, sintomasText, bntEliminar, bntEditar);
 

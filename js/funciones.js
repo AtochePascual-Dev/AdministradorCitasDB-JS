@@ -114,3 +114,25 @@ export const eliminarCita = (id) => {
     ui.mostrarMensaje('Error al eliminar la cita', false);
   };
 };
+
+// * Carga los datos del objeto y los inputs
+export const cargarDatos = (cita) => {
+  const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
+
+  // cargamos los datos de los inputs 
+  inputMascota.value = mascota;
+  inputPropietario.value = propietario;
+  inputTelefono.value = telefono;
+  inputFecha.value = fecha;
+  inputHora.value = hora;
+  inputSintomas.value = sintomas;
+
+  // Cargamos los datos del objeto cita
+  citaDatos.mascota = mascota;
+  citaDatos.propietario = propietario;
+  citaDatos.telefono = telefono;
+  citaDatos.fecha = fecha;
+  citaDatos.hora = hora;
+  citaDatos.sintomas = sintomas;
+  citaDatos.id = id;
+};

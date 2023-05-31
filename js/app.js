@@ -7,7 +7,6 @@ import {
   inputHora,
   inputSintomas,
   formulario,
-  citaDatos
 } from './variables.js';
 
 import { llenarDatosCita, generarCita, crearBaseDatos } from './funciones.js';
